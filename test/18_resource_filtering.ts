@@ -43,7 +43,7 @@ describe('Resource Filtering', () => {
 				body: {
 					app_name: `appapp${i}`,
 					slug: `admin/test-app-${i}`,
-					organization: 1,
+					belongs_to__organization: 1,
 					is_for__device_type: devicetype.id,
 				},
 			});

@@ -221,7 +221,7 @@ export interface Organization {
 	handle: string;
 	user__is_member_of__organization?: OrganizationMembership[];
 	includes__user?: OrganizationMembership[];
-	application?: Application[];
+	owns__application?: Application[];
 }
 
 export interface ServiceInstance {
@@ -241,7 +241,7 @@ export interface Application {
 	actor: number;
 	should_track_latest_release: boolean;
 	is_of__class: 'fleet' | 'block' | 'app';
-	organization: { __id: number } | [Organization];
+	belongs_to__organization: { __id: number } | [Organization];
 	app_name: string;
 	slug: string;
 	is_for__device_type: { __id: number } | [DeviceType];
@@ -560,7 +560,7 @@ export interface MyApplication {
 	actor: number;
 	should_track_latest_release: boolean;
 	is_of__class: 'fleet' | 'block' | 'app';
-	organization: { __id: number } | [Organization];
+	belongs_to__organization: { __id: number } | [Organization];
 	app_name: string;
 	slug: string;
 	is_for__device_type: { __id: number } | [DeviceType];

@@ -9,10 +9,10 @@ hooks.addPureHook('POST', 'resin', 'application', {
 		request.values.slug ??= '';
 	},
 	PRERUN: async ({ request, api }) => {
-		if (request.values.organization != null) {
+		if (request.values.belongs_to__organization != null) {
 			const organization = (await api.get({
 				resource: 'organization',
-				id: request.values.organization,
+				id: request.values.belongs_to__organization,
 				options: {
 					$select: 'handle',
 				},
@@ -35,7 +35,7 @@ hooks.addPureHook('PATCH', 'resin', 'application', {
 			return;
 		}
 		if (
-			request.values.organization != null ||
+			request.values.belongs_to__organization != null ||
 			request.values.app_name != null
 		) {
 			// If the owner of the app or the application name is changed, then update
@@ -52,7 +52,7 @@ hooks.addPureHook('PATCH', 'resin', 'application', {
 				options: {
 					$select: ['id', 'app_name'],
 					$expand: {
-						organization: {
+						belongs_to__organization: {
 							$select: ['handle'],
 						},
 					},

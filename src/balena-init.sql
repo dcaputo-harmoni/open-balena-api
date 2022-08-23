@@ -42,8 +42,8 @@ CREATE INDEX IF NOT EXISTS "application_depends_on_application_idx"
 ON "application" ("depends on-application");
 CREATE INDEX IF NOT EXISTS "application_device_type_idx"
 ON "application" ("is for-device type");
-CREATE INDEX IF NOT EXISTS "application_organization_idx"
-ON "application" ("organization");
+CREATE INDEX IF NOT EXISTS "application_belongs_to_organization_idx"
+ON "application" ("belongs to-organization");
 CREATE INDEX IF NOT EXISTS "application_release_idx"
 ON "application" ("should be running-release");
 CREATE INDEX IF NOT EXISTS "application_application_type_idx"

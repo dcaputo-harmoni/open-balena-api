@@ -470,9 +470,9 @@ Fact type: application type has maximum device count
 
 -- application
 
-Fact type: application has organization
-	Synonymous Form: organization has application
-	Necessity: each application has exactly one organization.
+Fact type: application belongs to organization
+	Synonymous Form: organization owns application
+	Necessity: each application belongs to exactly one organization.
 Fact type: application has app name
 	Necessity: each application has exactly one app name
 	Necessity: each application has an app name that has a Length (Type) that is greater than or equal to 4 and is less than or equal to 100.

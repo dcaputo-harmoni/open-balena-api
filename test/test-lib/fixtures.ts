@@ -99,7 +99,7 @@ const loaders: Dictionary<LoaderFunc> = {
 			resource: 'application',
 			body: {
 				...body,
-				organization: org.id,
+				belongs_to__organization: org.id,
 				is_for__device_type: deviceType.id,
 			},
 			user,
