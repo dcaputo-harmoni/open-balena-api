@@ -140,7 +140,7 @@ export const checkDevicesCanBeInApplication = async (
 	const devices = await api.get({
 		resource: 'device',
 		options: {
-			$select: ['os_version', 'supervisor_version', 'device_name'],
+			$select: ['os_version', 'supervisor_version', 'name'],
 			$filter: {
 				id: { $in: deviceIds },
 				$or: {
@@ -159,7 +159,7 @@ export const checkDevicesCanBeInApplication = async (
 const checkVersion = (device: AnyObject, appType: AnyObject) => {
 	if (device.os_version == null && device.supervisor_version != null) {
 		throw new DeviceOSVersionIsTooLow(
-			`Device ${device.device_name} is too old to satisfy required version range: ${appType.needs__os_version_range}`,
+			`Device ${device.name} is too old to satisfy required version range: ${appType.needs__os_version_range}`,
 		);
 	}
 	if (
@@ -167,7 +167,7 @@ const checkVersion = (device: AnyObject, appType: AnyObject) => {
 		!semver.satisfies(device.os_version, appType.needs__os_version_range)
 	) {
 		throw new DeviceOSVersionIsTooLow(
-			`Device ${device.device_name} has OS version ${device.os_version} but needs to satisfy version range: ${appType.needs__os_version_range}`,
+			`Device ${device.name} has OS version ${device.os_version} but needs to satisfy version range: ${appType.needs__os_version_range}`,
 		);
 	}
 };

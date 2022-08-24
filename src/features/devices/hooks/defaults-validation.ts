@@ -11,16 +11,15 @@ hooks.addPureHook('POST', 'resin', 'device', {
 	POSTPARSE: async ({ request }) => {
 		// Check for extra whitespace characters
 		if (
-			request.values.device_name != null &&
-			!isDeviceNameValid(request.values.device_name)
+			request.values.name != null &&
+			!isDeviceNameValid(request.values.name)
 		) {
 			throw new errors.BadRequestError(
 				'Device name cannot contain any newline characters.',
 			);
 		}
 
-		request.values.device_name =
-			request.values.device_name || haikuName.generate();
+		request.values.name = request.values.name || haikuName.generate();
 		request.values.uuid =
 			request.values.uuid || (await pseudoRandomBytesAsync(31)).toString('hex');
 
@@ -38,8 +37,8 @@ hooks.addPureHook('PATCH', 'resin', 'device', {
 
 		// Check for extra whitespace characters
 		if (
-			request.values.device_name != null &&
-			!isDeviceNameValid(request.values.device_name)
+			request.values.name != null &&
+			!isDeviceNameValid(request.values.name)
 		) {
 			throw new errors.BadRequestError(
 				'Device name cannot contain any newline characters.',

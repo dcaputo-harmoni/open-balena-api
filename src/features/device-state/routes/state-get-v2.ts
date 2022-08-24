@@ -218,7 +218,7 @@ const stateQuery = _.once(() =>
 		resource: 'device',
 		id: { uuid: { '@': 'uuid' } },
 		options: {
-			$select: ['device_name', 'os_version'],
+			$select: ['name', 'os_version'],
 			$expand: {
 				device_config_variable: {
 					$select: ['name', 'value'],
@@ -280,7 +280,7 @@ const stateQuery = _.once(() =>
 					},
 				},
 				manages__device: {
-					$select: ['uuid', 'device_name', 'belongs_to__application'],
+					$select: ['uuid', 'name', 'belongs_to__application'],
 					$expand: {
 						service_install: {
 							$select: ['id'],
@@ -320,7 +320,7 @@ const getStateV2 = async (req: Request, uuid: string): Promise<StateV2> => {
 	const userAppFromApi: AnyObject = device.belongs_to__application[0];
 
 	const local: StateV2['local'] = {
-		name: device.device_name,
+		name: device.name,
 		config,
 		apps: {
 			[userAppFromApi.id]: userApp,
@@ -491,7 +491,7 @@ const getDependent = (device: AnyObject): StateV2['dependent'] => {
 		}
 
 		dependentInfo.devices[depDev.uuid] = {
-			name: depDev.device_name,
+			name: depDev.name,
 			apps: {
 				[depAppId]: {
 					config: depConfig,

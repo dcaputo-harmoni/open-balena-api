@@ -475,9 +475,7 @@ mockery.registerMock('../src/lib/config', configMock);
 				pineUser,
 				'device',
 				device.id,
-				_.mapKeys(devicePatchBody[stateKey], (_v, key) =>
-					key === 'name' ? 'device_name' : key,
-				),
+				_.mapKeys(devicePatchBody[stateKey], (_v, key) => key),
 			);
 		});
 

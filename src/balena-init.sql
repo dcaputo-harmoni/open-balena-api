@@ -157,7 +157,7 @@ ON "application" ("is host");
 CREATE INDEX IF NOT EXISTS "device_api heartbeat state_idx"
 ON "device" ("api heartbeat state");
 CREATE INDEX IF NOT EXISTS "device_name_idx"
-ON "device" ("device name");
+ON "device" ("name");
 -- Optimize querying uuid with startswith and similar text patterns
 CREATE INDEX IF NOT EXISTS "device_uuid_idx"
 ON "device" ("uuid" text_pattern_ops);

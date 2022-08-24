@@ -13,7 +13,7 @@ hooks.addPureHook('PATCH', 'resin', 'device', {
 		if (
 			(request.values.should_be_running__release !== undefined ||
 				request.values.belongs_to__application != null ||
-				request.values.device_name != null) &&
+				request.values.name != null) &&
 			affectedIds.length !== 0
 		) {
 			// Send the update requests only after the tx is committed

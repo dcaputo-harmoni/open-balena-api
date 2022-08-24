@@ -15,6 +15,7 @@ export const v3ValidPatchFields: Array<
 	'is_managed_by__device',
 	'status',
 	'is_online',
+	'name',
 	'os_version',
 	'os_variant',
 	'supervisor_version',
@@ -34,7 +35,6 @@ export const v2ValidPatchFields: Array<
 > = [
 	...v3ValidPatchFields,
 	'should_be_running__release',
-	'device_name',
 	'note',
 	'download_progress',
 ];

@@ -280,7 +280,7 @@ export const statePatchV3: RequestHandler = async (req, res) => {
 
 			let deviceBody:
 				| Pick<StatePatchV3Body[string], typeof v3ValidPatchFields[number]> & {
-						device_name?: string;
+						name?: string;
 						is_running__release?: number | null;
 				  } = _.pick(state, v3ValidPatchFields);
 			let metricsBody: Pick<
@@ -295,10 +295,6 @@ export const statePatchV3: RequestHandler = async (req, res) => {
 				// that we don't try to merge it again later
 				deviceBody = { ...deviceBody, ...metricsBody };
 				metricsBody = {};
-			}
-
-			if (state.name != null) {
-				deviceBody.device_name = state.name;
 			}
 
 			const userAppUuid = device.belongs_to__application[0].uuid;

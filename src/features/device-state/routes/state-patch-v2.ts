@@ -238,8 +238,8 @@ export const statePatchV2: RequestHandler = async (req, res) => {
 				metricsBody = {};
 			}
 
-			if (local.name != null) {
-				deviceBody.device_name = local.name;
+			if (local.device_name != null && local.name == null) {
+				deviceBody.name = local.device_name;
 			}
 
 			if (

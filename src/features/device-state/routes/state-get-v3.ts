@@ -269,11 +269,11 @@ const stateQuery = _.once(() =>
 		resource: 'device',
 		id: { uuid: { '@': 'uuid' } },
 		options: {
-			$select: ['device_name', 'os_version'],
+			$select: ['name', 'os_version'],
 			$expand: {
 				...deviceExpand,
 				manages__device: {
-					$select: ['uuid', 'device_name'],
+					$select: ['uuid', 'name'],
 					$expand: deviceExpand,
 				},
 			},
@@ -296,7 +296,7 @@ const getStateV3 = async (req: Request, uuid: string): Promise<StateV3> => {
 	}
 	const state: StateV3 = {
 		[uuid]: {
-			name: device.device_name,
+			name: device.name,
 			apps,
 			config,
 		},
@@ -304,7 +304,7 @@ const getStateV3 = async (req: Request, uuid: string): Promise<StateV3> => {
 
 	for (const depDev of device.manages__device as AnyObject[]) {
 		state[depDev.uuid] = {
-			name: depDev.device_name,
+			name: depDev.name,
 			apps: getUserAppState(depDev, getConfig(depDev)),
 		};
 	}
