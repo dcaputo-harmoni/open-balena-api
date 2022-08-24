@@ -41,7 +41,7 @@ describe('Resource Filtering', () => {
 			} = await pineUser.post({
 				resource: 'application',
 				body: {
-					app_name: `appapp${i}`,
+					name: `appapp${i}`,
 					slug: `admin/test-app-${i}`,
 					belongs_to__organization: 1,
 					is_for__device_type: devicetype.id,

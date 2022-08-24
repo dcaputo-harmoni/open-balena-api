@@ -88,9 +88,6 @@ Term: api port
 Term: api secret
 	Concept Type: Short Text (Type)
 
-Term: app name
-	Concept Type: Text (Type)
-
 Term: build log
 	Concept Type: Text (Type)
 
@@ -473,9 +470,9 @@ Fact type: application type has maximum device count
 Fact type: application belongs to organization
 	Synonymous Form: organization owns application
 	Necessity: each application belongs to exactly one organization.
-Fact type: application has app name
-	Necessity: each application has exactly one app name
-	Necessity: each application has an app name that has a Length (Type) that is greater than or equal to 4 and is less than or equal to 100.
+Fact type: application has name (Auth)
+	Necessity: each application has exactly one name (Auth)
+	Necessity: each application has an name (Auth) that has a Length (Type) that is greater than or equal to 4 and is less than or equal to 100.
 Fact type: application has slug
 	Necessity: each application has exactly one slug
 	Necessity: each slug is of exactly one application

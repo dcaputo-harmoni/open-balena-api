@@ -84,7 +84,7 @@ const loaders: Dictionary<LoaderFunc> = {
 
 		const body = _.pick(
 			jsonData,
-			'app_name',
+			'name',
 			'depends_on__application',
 			'should_track_latest_release',
 			'application_type',
@@ -193,7 +193,7 @@ const loaders: Dictionary<LoaderFunc> = {
 					jsonData.commit ?? randomUUID().replace(/\-/g, '').toLowerCase(),
 				..._.pick(
 					jsonData,
-					'app_name',
+					'name',
 					'status',
 					'composition',
 					'source',

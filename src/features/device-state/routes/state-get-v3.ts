@@ -240,7 +240,7 @@ const deviceExpand: Expand = {
 		},
 	},
 	belongs_to__application: {
-		$select: ['id', 'uuid', 'app_name', 'is_host', 'is_of__class'],
+		$select: ['id', 'uuid', 'name', 'is_host', 'is_of__class'],
 		$expand: {
 			...appExpand,
 			application_config_variable: {
@@ -257,7 +257,7 @@ const deviceExpand: Expand = {
 		$expand: {
 			...releaseExpand.$expand,
 			belongs_to__application: {
-				$select: ['id', 'uuid', 'app_name', 'is_host', 'is_of__class'],
+				$select: ['id', 'uuid', 'name', 'is_host', 'is_of__class'],
 				$expand: appExpand,
 			},
 		},
@@ -376,7 +376,7 @@ const getAppState = (
 	return {
 		[application.uuid]: {
 			id: application.id,
-			name: application.app_name,
+			name: application.name,
 			is_host: application.is_host,
 			class: application.is_of__class,
 			...(release != null && {

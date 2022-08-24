@@ -22,7 +22,7 @@ hooks.addPureHook('POST', 'resin', 'application', {
 	POSTPARSE: async ({ request }) => {
 		request.values.application_type ??= DefaultApplicationType.id;
 
-		if (!/^[a-zA-Z0-9_-]+$/.test(request.values.app_name)) {
+		if (!/^[a-zA-Z0-9_-]+$/.test(request.values.name)) {
 			throw new errors.BadRequestError(
 				'App name may only contain [a-zA-Z0-9_-].',
 			);

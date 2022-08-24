@@ -20,7 +20,7 @@ hooks.addPureHook('POST', 'resin', 'application', {
 			if (organization) {
 				request.values.slug = getApplicationSlug(
 					organization.handle,
-					request.values.app_name,
+					request.values.name,
 				);
 			}
 		}
@@ -36,7 +36,7 @@ hooks.addPureHook('PATCH', 'resin', 'application', {
 		}
 		if (
 			request.values.belongs_to__organization != null ||
-			request.values.app_name != null
+			request.values.name != null
 		) {
 			// If the owner of the app or the application name is changed, then update
 			// the app's `slug`.
@@ -50,7 +50,7 @@ hooks.addPureHook('PATCH', 'resin', 'application', {
 			const apps = await rootApi.get({
 				resource: 'application',
 				options: {
-					$select: ['id', 'app_name'],
+					$select: ['id', 'name'],
 					$expand: {
 						belongs_to__organization: {
 							$select: ['handle'],
@@ -68,10 +68,7 @@ hooks.addPureHook('PATCH', 'resin', 'application', {
 						resource: 'application',
 						id: app.id,
 						body: {
-							slug: getApplicationSlug(
-								app.organization[0].handle,
-								app.app_name,
-							),
+							slug: getApplicationSlug(app.organization[0].handle, app.name),
 						},
 					}),
 				),
@@ -97,9 +94,9 @@ hooks.addPureHook('PATCH', 'resin', 'organization', {
 							$filter: {
 								organization: organizationID,
 							},
-							$select: ['id', 'app_name'],
+							$select: ['id', 'name'],
 						},
-					})) as Array<Pick<Application, 'id' | 'app_name'>>;
+					})) as Array<Pick<Application, 'id' | 'name'>>;
 
 					const rootApiTx = api.clone({
 						passthrough: {
@@ -109,12 +106,12 @@ hooks.addPureHook('PATCH', 'resin', 'organization', {
 					});
 
 					await Promise.all(
-						apps.map(({ id, app_name }) =>
+						apps.map(({ id, name }) =>
 							rootApiTx.patch({
 								resource: 'application',
 								id,
 								body: {
-									slug: getApplicationSlug(request.values.handle, app_name),
+									slug: getApplicationSlug(request.values.handle, name),
 								},
 							}),
 						),

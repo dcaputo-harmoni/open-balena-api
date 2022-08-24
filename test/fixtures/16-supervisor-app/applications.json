@@ -2,28 +2,28 @@
 	"app1": {
 		"user": "admin",
 		"device_type": "intel-nuc",
-		"app_name": "supervisor_release_test_app"
+		"name": "supervisor_release_test_app"
 	},
 	"host_app": {
 		"user": "admin",
 		"device_type": "intel-nuc",
 		"is_public": true,
 		"is_host": true,
-		"app_name": "test-device-type",
+		"name": "test-device-type",
 		"organization": "balena_os"
 	},
 	"armv7hf_supervisor_app": {
 		"user": "admin",
 		"device_type": "raspberrypi3",
 		"is_public": true,
-		"app_name": "armv7hf-supervisor",
+		"name": "armv7hf-supervisor",
 		"organization": "balena_os"
 	},
 	"amd64_supervisor_app": {
 		"user": "admin",
 		"device_type": "intel-nuc",
 		"is_public": true,
-		"app_name": "amd64-supervisor",
+		"name": "amd64-supervisor",
 		"organization": "balena_os"
 	}
 }

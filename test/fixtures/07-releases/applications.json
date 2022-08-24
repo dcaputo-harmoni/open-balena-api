@@ -1,13 +1,13 @@
 {
 	"app1": {
 		"user": "admin",
-		"app_name": "test_release",
+		"name": "test_release",
 		"device_type": "raspberry-pi",
 		"commit": "deadbeef"
 	},
 	"app2": {
 		"user": "admin",
-		"app_name": "test_release2",
+		"name": "test_release2",
 		"device_type": "raspberry-pi"
 	}
 }

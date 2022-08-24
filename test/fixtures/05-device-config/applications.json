@@ -1,7 +1,7 @@
 {
 	"app1": {
 		"user": "admin",
-		"app_name": "test_create_device_env_var",
+		"name": "test_create_device_env_var",
 		"device_type": "raspberry-pi"
 	}
 }

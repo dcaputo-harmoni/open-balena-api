@@ -3,14 +3,14 @@
 		"uuid": "f3ad5e4c8309404b834b1dbae41fa6fc",
 		"user": "admin",
 		"device_type": "intel-nuc",
-		"app_name": "test-app-1"
+		"name": "test-app-1"
 	},
 	"supervisorApp": {
 		"uuid": "031f48d8f47b4062ad2d67b8de933711",
 		"user": "admin",
 		"device_type": "intel-nuc",
 		"is_public": true,
-		"app_name": "amd64-supervisor",
+		"name": "amd64-supervisor",
 		"organization": "balena_os"
 	},
 	"supervisorAppPi": {
@@ -18,7 +18,7 @@
 		"user": "admin",
 		"device_type": "raspberrypi3",
 		"is_public": true,
-		"app_name": "armv7hf-supervisor",
+		"name": "armv7hf-supervisor",
 		"organization": "balena_os"
 	}
 }

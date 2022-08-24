@@ -20,16 +20,16 @@ describe('resource access', function () {
 	[
 		{
 			title: 'application',
-			odataPart: `application?$select=id&$filter=is_host eq false&$orderby=app_name asc`,
+			odataPart: `application?$select=id&$filter=is_host eq false&$orderby=name asc`,
 		},
 		{
 			title: 'user__has_direct_access_to__application',
-			odataPart: `user__has_direct_access_to__application?$select=has_direct_access_to__application&$orderby=has_direct_access_to__application/app_name asc`,
+			odataPart: `user__has_direct_access_to__application?$select=has_direct_access_to__application&$orderby=has_direct_access_to__application/name asc`,
 			appIdField: 'has_direct_access_to__application.__id',
 		},
 		{
 			title: 'application when filtering by is_directly_accessible_by__user',
-			odataPart: `application?$select=id&$filter=is_directly_accessible_by__user/any(dau:1 eq 1)&$orderby=app_name asc`,
+			odataPart: `application?$select=id&$filter=is_directly_accessible_by__user/any(dau:1 eq 1)&$orderby=name asc`,
 		},
 	].forEach(({ title, odataPart, appIdField = 'id' }) => {
 		describe(`${title} access`, function () {

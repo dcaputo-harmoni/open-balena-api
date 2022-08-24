@@ -2,7 +2,7 @@ import { hooks, errors } from '@balena/pinejs';
 
 hooks.addPureHook('PATCH', 'resin', 'application', {
 	POSTPARSE: ({ request }) => {
-		const appName = request.values.app_name;
+		const appName = request.values.name;
 
 		if (appName) {
 			if (!/^[a-zA-Z0-9_-]+$/.test(appName)) {

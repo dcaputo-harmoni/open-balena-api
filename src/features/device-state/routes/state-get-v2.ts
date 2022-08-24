@@ -180,7 +180,7 @@ function buildAppFromRelease(
 	return {
 		releaseId: release.id,
 		commit: release.commit,
-		name: application.app_name,
+		name: application.name,
 		services,
 		networks: composition?.networks || {},
 		volumes: composition?.volumes || {},
@@ -250,7 +250,7 @@ const stateQuery = _.once(() =>
 					},
 				},
 				belongs_to__application: {
-					$select: ['id', 'app_name'],
+					$select: ['id', 'name'],
 					$expand: {
 						application_config_variable: {
 							$select: ['name', 'value'],
@@ -262,7 +262,7 @@ const stateQuery = _.once(() =>
 							$select: ['name', 'value'],
 						},
 						is_depended_on_by__application: {
-							$select: ['id', 'app_name'],
+							$select: ['id', 'name'],
 							$expand: {
 								application_config_variable: {
 									$select: ['name', 'value'],
@@ -397,7 +397,7 @@ const getUserAppForState = (
 	// grab the main app for this device...
 	return release == null
 		? {
-				name: userAppFromApi.app_name,
+				name: userAppFromApi.name,
 				services: {},
 				networks: {},
 				volumes: {},
@@ -440,7 +440,7 @@ const getDependent = (device: AnyObject): StateV2['dependent'] => {
 		);
 
 		dependentInfo.apps[depApp.id] = {
-			name: depApp.app_name,
+			name: depApp.name,
 			parentApp: userAppFromApi.id,
 			config: depConfig,
 		};
