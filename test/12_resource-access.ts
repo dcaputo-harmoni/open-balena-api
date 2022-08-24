@@ -23,10 +23,6 @@ describe('resource access', function () {
 			odataPart: `application?$select=id&$filter=is_host eq false&$orderby=app_name asc`,
 		},
 		{
-			title: 'my_application',
-			odataPart: `my_application?$select=id&$orderby=app_name asc`,
-		},
-		{
 			title: 'user__has_direct_access_to__application',
 			odataPart: `user__has_direct_access_to__application?$select=has_direct_access_to__application&$orderby=has_direct_access_to__application/app_name asc`,
 			appIdField: 'has_direct_access_to__application.__id',

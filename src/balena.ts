@@ -1,5 +1,4 @@
 import {
-	aliasTable,
 	generateAbstractSqlModel,
 	renameVarResourcesName,
 	optimizeSchema,
@@ -14,11 +13,6 @@ export const modelName = 'balena';
 export const migrationsPath = __dirname + '/migrations/';
 export const initSqlPath = __dirname + '/balena-init.sql';
 export const abstractSql = generateAbstractSqlModel(__dirname + '/balena.sbvr');
-
-aliasTable(abstractSql, 'application', 'my application', {
-	binds: [],
-	abstractSql: ['Resource', 'application'],
-});
 
 renameVarResourcesName(abstractSql);
 
