@@ -225,6 +225,7 @@ export const statePatchV2: RequestHandler = async (req, res) => {
 			let deviceBody:
 				| Pick<LocalBody, typeof v2ValidPatchFields[number]> & {
 						is_running__release?: number | null;
+						is_pinned_on__release?: number | null;
 				  } = _.pick(local, v2ValidPatchFields);
 			let metricsBody: Pick<LocalBody, typeof metricsPatchFields[number]> =
 				_.pick(local, metricsPatchFields);
@@ -238,8 +239,12 @@ export const statePatchV2: RequestHandler = async (req, res) => {
 				metricsBody = {};
 			}
 
-			if (local.device_name != null && local.name == null) {
+			if (local.name === undefined && local.device_name != null) {
 				deviceBody.name = local.device_name;
+			}
+
+			if (local.should_be_running__release !== undefined) {
+				deviceBody.is_pinned_on__release = local.should_be_running__release;
 			}
 
 			if (

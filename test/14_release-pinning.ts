@@ -74,7 +74,7 @@ describe(`Tracking latest release`, () => {
 		await supertest(admin)
 			.patch(`/${version}/device(${device.id})`)
 			.send({
-				should_be_running__release: pinnedRelease.id,
+				is_pinned_on__release: pinnedRelease.id,
 			})
 			.expect(200);
 
@@ -95,7 +95,7 @@ describe(`Tracking latest release`, () => {
 		await supertest(admin)
 			.patch(`/${version}/device(${device.id})`)
 			.send({
-				should_be_running__release: null,
+				is_pinned_on__release: null,
 			})
 			.expect(200);
 	});
@@ -368,7 +368,7 @@ describe(`Tracking latest release`, () => {
 			await supertest(device4)
 				.patch(`/${version}/device(${device4.id})`)
 				.send({
-					should_be_running__release: app3ReleaseId,
+					is_pinned_on__release: app3ReleaseId,
 				})
 				.expect(200);
 
@@ -392,7 +392,7 @@ describe(`Tracking latest release`, () => {
 				await supertest(device4)
 					.patch(`/${version}/device(${device4.id})`)
 					.send({
-						should_be_running__release: app3ReleaseId,
+						is_pinned_on__release: app3ReleaseId,
 					})
 					.expect(200);
 			});

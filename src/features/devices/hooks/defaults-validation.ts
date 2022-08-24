@@ -61,9 +61,9 @@ hooks.addPureHook('PATCH', 'resin', 'device', {
 		// build has been targeted, instead of pointing to a build of the wrong application
 		if (
 			request.values.belongs_to__application != null &&
-			request.values.should_be_running__release === undefined
+			request.values.is_pinned_on__release === undefined
 		) {
-			request.values.should_be_running__release = null;
+			request.values.is_pinned_on__release = null;
 		}
 
 		if (request.values.is_connected_to_vpn != null) {

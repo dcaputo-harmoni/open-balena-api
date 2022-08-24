@@ -322,7 +322,7 @@ export const addToModel = (
 									],
 									[
 										'Coalesce',
-										['ReferencedField', 'device', 'should be running-release'],
+										['ReferencedField', 'device', 'is pinned on-release'],
 										[
 											'SelectQuery',
 											[

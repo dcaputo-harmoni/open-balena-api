@@ -28,8 +28,8 @@ export const setDefaultConfigVariables = (config: Dictionary<string>): void => {
 export const getReleaseForDevice = (
 	device: AnyObject,
 ): AnyObject | undefined => {
-	if (device.should_be_running__release[0] != null) {
-		return device.should_be_running__release[0];
+	if (device.is_pinned_on__release[0] != null) {
+		return device.is_pinned_on__release[0];
 	}
 	return device.belongs_to__application[0]?.should_be_running__release[0];
 };

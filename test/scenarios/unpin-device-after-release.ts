@@ -78,7 +78,7 @@ describe('Device with missing service installs', () => {
 		await supertest(admin)
 			.patch(`/${version}/device(${device.id})`)
 			.send({
-				should_be_running__release: releases['deadbeef'],
+				is_pinned_on__release: releases['deadbeef'],
 			})
 			.expect(200);
 
@@ -160,7 +160,7 @@ describe('Device with missing service installs', () => {
 		await supertest(admin)
 			.patch(`/${version}/device(${device.id})`)
 			.send({
-				should_be_running__release: null,
+				is_pinned_on__release: null,
 			})
 			.expect(200);
 	});
