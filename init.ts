@@ -8,7 +8,7 @@ import { version } from './package.json';
 import { promises as fs } from 'fs';
 import { TRUST_PROXY, PORT } from './src/lib/config';
 
-export const EXPOSED_API_VERSION = 'v6';
+export const EXPOSED_API_VERSION = 'v7';
 
 const getUrl = (req: express.Request) => req.url;
 
