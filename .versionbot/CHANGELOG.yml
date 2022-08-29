@@ -1,4 +1,20 @@
 - commits:
+    - subject: Correct gpio example env var
+      hash: 99ee3c233534530371e63541d8e8821556fcc5da
+      body: |
+        Corrected from `"gpio=19=op,dh","gpio=0-25=a2"` which will result in
+        `gpio=gpio=...` in config.txt being applied by the Supervisor.
+      footer:
+        Change-type: patch
+        change-type: patch
+        Signed-off-by: Christina Wang <christina@balena.io>
+        signed-off-by: Christina Wang <christina@balena.io>
+      author: Christina Wang
+      nested: []
+  version: 4.1.7
+  title: "'Correct gpio example env var'"
+  date: 2022-08-29T18:08:13.929Z
+- commits:
     - subject: Remove unused `max` option from the global multi-level-memoizee typings
       hash: 378df9967a1efd8ecd1f828e129721cb4f509020
       body: ""
