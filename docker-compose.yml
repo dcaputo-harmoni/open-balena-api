@@ -63,8 +63,8 @@ services:
       MIXPANEL_TOKEN: mixpanel_token 
       NUM_WORKERS: 1 
       PORT: 80 
-      TRUST_PROXY: true
-      REDIS_IS_CLUSTER: false
+      TRUST_PROXY: "true"
+      REDIS_IS_CLUSTER: "false"
       REDIS_HOST: "redis:6379" 
       LOKI_HOST: loki
       LOKI_PORT: 9095 
