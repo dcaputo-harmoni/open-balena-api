@@ -1,4 +1,19 @@
 - commits:
+    - subject: Default fleet state compatible to device state v3
+      hash: da975e2ead09fcf0b670fa72710a4dbce7eca7ea
+      body: |
+        resolves #1071
+      footer:
+        Change-type: minor
+        change-type: minor
+        Signed-off-by: Harald Fischer <harald@balena.io>
+        signed-off-by: Harald Fischer <harald@balena.io>
+      author: Harald Fischer
+      nested: []
+  version: 4.6.0
+  title: "'Device v3 compatible fleet default state'"
+  date: 2022-09-12T09:18:20.178Z
+- commits:
     - subject: Update pinejs version for async migrator
       hash: dd0f6aa8899f00f4154f927a3742265d742ee610
       body: |
