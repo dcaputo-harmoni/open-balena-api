@@ -1,4 +1,32 @@
 - commits:
+    - subject: Utilise docker-compose to control test dependency
+      hash: efedf6865cd039de03483a14d0fcc4f2cca21169
+      body: |
+        Change-type: minor
+        Signed-off-by: Harald Fischer <harald@balena.io>
+
+        Utilise docker-compose to control test dependency
+      footer:
+        Change-type: minor
+        change-type: minor
+        Signed-off-by: Harald Fischer <harald@balena.io>
+        signed-off-by: Harald Fischer <harald@balena.io>
+      author: Harald Fischer
+      nested: []
+    - subject: Utilise docker-compose to control test dependency
+      hash: a9ca5ec345949c6aaa907c2a8e9999f55619341c
+      body: ""
+      footer:
+        Change-type: minor
+        change-type: minor
+        Signed-off-by: Harald Fischer <harald@balena.io>
+        signed-off-by: Harald Fischer <harald@balena.io>
+      author: Harald Fischer
+      nested: []
+  version: 4.6.0
+  title: "'Utilise docker-compose to control test dependency'"
+  date: 2022-09-12T09:16:38.433Z
+- commits:
     - subject: Update pinejs version for async migrator
       hash: dd0f6aa8899f00f4154f927a3742265d742ee610
       body: |
