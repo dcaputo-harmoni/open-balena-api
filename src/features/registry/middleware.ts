@@ -1,13 +1,13 @@
 import * as BasicAuth from 'basic-auth';
 import type { RequestHandler } from 'express';
 
-import { retrieveAPIKey } from '../../infra/auth/api-keys';
+import { getUser } from '../../infra/auth/auth';
 
 // Resolves permissions and populates req.user object, in case an api key is used
-// in the password field of a basic authentication header
+// in the password field of a basic authentication header. Also works with JWTs.
 export const basicApiKeyAuthenticate: RequestHandler = async (
 	req,
-	_res,
+	res,
 	next,
 ) => {
 	const creds = BasicAuth.parse(req.headers['authorization']!);
@@ -16,8 +16,12 @@ export const basicApiKeyAuthenticate: RequestHandler = async (
 		req.params.apikey = creds.pass;
 	}
 	try {
-		await retrieveAPIKey(req, undefined);
-		next();
+		await getUser(req, undefined, false);
+		if (req.creds) {
+			next();
+		} else {
+			res.status(401).end();
+		}
 	} catch (err) {
 		next(err);
 	}
