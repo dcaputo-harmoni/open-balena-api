@@ -1,4 +1,31 @@
 - commits:
+    - subject: Update balena/open-balena-base Docker tag to v13.5.2
+      hash: c85b1ad46f413a46a8302b7b18079725ad2d596e
+      body: |
+        Update balena/open-balena-base to 13.5.2
+
+        Update balena/open-balena-base from 13.5.1 to 13.5.2
+      footer:
+        Change-type: patch
+        change-type: patch
+      author: Renovate Bot
+      nested:
+        - commits:
+            - subject: Update to nodejs 16.17.1
+              hash: e6e486ef5eb2a497c635701fceaba719af24f041
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: Pagan Gazzard
+              nested: []
+          version: open-balena-base-13.5.2
+          title: "'Update to nodejs 16.17.1'"
+          date: 2022-09-26T13:08:05.210Z
+  version: 4.6.1
+  title: "'Update balena/open-balena-base Docker tag to v13.5.2'"
+  date: 2022-09-26T16:16:58.234Z
+- commits:
     - subject: Update pinejs to support filtered $count inside $orderby
       hash: e5ad78243df0eaf3c75b2517cf185dc9aac4adc7
       body: |
