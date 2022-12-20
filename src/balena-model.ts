@@ -56,7 +56,7 @@ export interface User {
 	created_at: DateString;
 	modified_at: DateString;
 	id: number;
-	actor: number;
+	actor: { __id: number } | [Actor];
 	username: string;
 	password: string | null;
 	jwt_secret: string | null;
@@ -239,7 +239,7 @@ export interface Application {
 	created_at: DateString;
 	modified_at: DateString;
 	id: number;
-	actor: number;
+	actor: { __id: number } | [Actor];
 	should_track_latest_release: boolean;
 	is_of__class: 'fleet' | 'block' | 'app';
 	organization: { __id: number } | [Organization];
@@ -325,7 +325,7 @@ export interface Device {
 	created_at: DateString;
 	modified_at: DateString;
 	id: number;
-	actor: number;
+	actor: { __id: number } | [Actor];
 	api_heartbeat_state: 'online' | 'offline' | 'timeout' | 'unknown';
 	uuid: string;
 	local_id: string | null;
@@ -559,7 +559,7 @@ export interface MyApplication {
 	created_at: DateString;
 	modified_at: DateString;
 	id: number;
-	actor: number;
+	actor: { __id: number } | [Actor];
 	should_track_latest_release: boolean;
 	is_of__class: 'fleet' | 'block' | 'app';
 	organization: { __id: number } | [Organization];
