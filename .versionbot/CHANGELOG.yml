@@ -1,4 +1,16 @@
 - commits:
+    - subject: Update to pinejs 15
+      hash: ab97fdd1e8b3e4e51ee7e8a5b2dd5026640b67f4
+      body: ""
+      footer:
+        Change-type: major
+        change-type: major
+      author: Pagan Gazzard
+      nested: []
+  version: 8.0.0
+  title: ""
+  date: 2022-12-30T16:24:16.723Z
+- commits:
     - subject: Preserve comments in the generated output for JSDoc reasons
       hash: ed25b53defcc5f8246a3530ff7a994adf7b3ab3d
       body: ""
