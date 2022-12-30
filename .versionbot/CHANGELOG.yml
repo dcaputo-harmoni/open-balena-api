@@ -1,4 +1,16 @@
 - commits:
+    - subject: Send a byte back periodically from the log-stream endpoint
+      hash: 7a9bc9aead16232ea13cd473e312a8b7aac4449a
+      body: ""
+      footer:
+        Change-type: patch
+        change-type: patch
+      author: Felipe Lalanne
+      nested: []
+  version: 7.3.2
+  title: ""
+  date: 2022-12-30T00:57:04.459Z
+- commits:
     - subject: Preserve comments in the generated output for JSDoc reasons
       hash: ed25b53defcc5f8246a3530ff7a994adf7b3ab3d
       body: ""
