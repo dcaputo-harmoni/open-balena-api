@@ -33,11 +33,11 @@
     "prepare": "node -e \"try { require('husky').install() } catch (e) {if (e.code !== 'MODULE_NOT_FOUND') throw e}\""
   },
   "dependencies": {
-    "@balena/abstract-sql-compiler": "^7.23.0",
+    "@balena/abstract-sql-compiler": "7.23.1-build-web-resource-2-bb7fa551c55fbcd1810da1332991f329c2aeb0e9-1",
     "@balena/env-parsing": "^1.1.0",
     "@balena/es-version": "^1.0.2",
     "@balena/node-metrics-gatherer": "^6.0.3",
-    "@balena/pinejs": "^14.53.6",
+    "@balena/pinejs": "14.55.0-build-web-resource-2-d3145095af65a0af480db9b0d861328390fa0c7a-1",
     "@sentry/node": "^7.24.2",
     "@types/basic-auth": "^1.1.3",
     "@types/bluebird": "^3.5.38",
