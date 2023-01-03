@@ -1,4 +1,16 @@
 - commits:
+    - subject: Include id in "image"."is a build of-service" index
+      hash: 2226819f9d0de9dd76f31b4e1884bd567f26d7e8
+      body: ""
+      footer:
+        Change-type: patch
+        change-type: patch
+      author: Pagan Gazzard
+      nested: []
+  version: 7.4.1
+  title: ""
+  date: 2023-01-03T18:41:36.001Z
+- commits:
     - subject: Use new authenticated middleware on some endpoints to require auth
       hash: e8a34aa5acdb015e240afdb24cbb17d0cb826eb0
       body: |
