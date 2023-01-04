@@ -1,4 +1,18 @@
 - commits:
+    - subject: Add monogram to organisation model for testing file-upload
+      hash: a0d7debdf6f33dd534392bcb1a2bf851bc5e4d08
+      body: ""
+      footer:
+        Change-Type: patch
+        change-type: patch
+        Signed-off-by: Nitish Agarwal <1592163+nitishagar@users.noreply.github.com>
+        signed-off-by: Nitish Agarwal <1592163+nitishagar@users.noreply.github.com>
+      author: Nitish Agarwal
+      nested: []
+  version: 7.3.2
+  title: ""
+  date: 2023-01-04T07:30:59.211Z
+- commits:
     - subject: Preserve comments in the generated output for JSDoc reasons
       hash: ed25b53defcc5f8246a3530ff7a994adf7b3ab3d
       body: ""
