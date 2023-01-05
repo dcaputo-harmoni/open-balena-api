@@ -1,7 +1,7 @@
 {
   "name": "@balena/open-balena-api",
   "description": "Internet of things, Made Simple",
-  "version": "7.4.0",
+  "version": "6.10.1",
   "license": "AGPL-3.0",
   "repository": {
     "type": "git",
@@ -51,7 +51,7 @@
     "@types/express": "^4.17.14",
     "@types/express-serve-static-core": "^4.17.31",
     "@types/json-schema": "^7.0.11",
-    "@types/jsonwebtoken": "^9.0.0",
+    "@types/jsonwebtoken": "^8.5.9",
     "@types/lodash": "^4.14.191",
     "@types/memoizee": "^0.4.8",
     "@types/morgan": "^1.9.3",
@@ -91,7 +91,7 @@
     "fast-glob": "^3.2.12",
     "ioredis": "^5.2.4",
     "ipaddr.js": "^2.0.1",
-    "jsonwebtoken": "^9.0.0",
+    "jsonwebtoken": "^8.5.1",
     "lodash": "^4.17.21",
     "loki-grpc-client": "^2.0.0",
     "memoizee": "^0.4.15",
@@ -130,7 +130,7 @@
     "chai": "^4.3.7",
     "copyfiles": "^2.4.1",
     "husky": "^8.0.2",
-    "libpg-query": "^15.0.0",
+    "libpg-query": "^13.3.0",
     "lint-staged": "^13.1.0",
     "mocha": "^10.1.0",
     "mockery": "^2.1.0",
@@ -153,6 +153,6 @@
     "_": "index.js"
   },
   "versionist": {
-    "publishedAt": "2023-01-03T17:00:32.792Z"
+    "publishedAt": "2022-12-20T17:41:32.789Z"
   }
 }

@@ -2,13 +2,14 @@ import type { Application, Request } from 'express';
 import type StrictEventEmitter from 'strict-event-emitter-types';
 
 import { EventEmitter } from 'events';
-import { middleware } from '../../infra/auth';
+import { apiKeyMiddleware } from '../../infra/auth';
 
 import { resolveOrGracefullyDenyDevices } from './middleware';
 import { stateV2 } from './routes/state-get-v2';
 import { stateV3 } from './routes/state-get-v3';
 import { statePatchV2 } from './routes/state-patch-v2';
 import { statePatchV3 } from './routes/state-patch-v3';
+import { fleetStateV3 } from './routes/fleet-state-get-v3';
 
 export {
 	setReadTransaction,
@@ -29,22 +30,28 @@ export const setup = (app: Application) => {
 	app.get(
 		'/device/v2/:uuid/state',
 		resolveOrGracefullyDenyDevices,
-		middleware.authenticated,
+		apiKeyMiddleware,
 		stateV2,
 	);
 	app.get(
 		'/device/v3/:uuid/state',
 		resolveOrGracefullyDenyDevices,
-		middleware.authenticated,
+		apiKeyMiddleware,
 		stateV3,
 	);
 	app.patch(
 		'/device/v2/:uuid/state',
 		resolveOrGracefullyDenyDevices,
-		middleware.authenticatedApiKey,
+		apiKeyMiddleware,
 		statePatchV2,
 	);
-	app.patch('/device/v3/state', middleware.authenticatedApiKey, statePatchV3);
+	app.patch('/device/v3/state', apiKeyMiddleware, statePatchV3);
+	app.get('/device/v3/fleet/:fleetUuid/state', apiKeyMiddleware, fleetStateV3);
+	app.get(
+		'/device/v3/fleet/:fleetUuid/release/:releaseUuid/state',
+		apiKeyMiddleware,
+		fleetStateV3,
+	);
 };
 
 export interface Events {

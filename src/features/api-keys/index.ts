@@ -1,6 +1,10 @@
 import type { Application } from 'express';
 
-import { middleware } from '../../infra/auth';
+import {
+	apiKeyMiddleware,
+	authorizedMiddleware,
+	permissionRequiredMiddleware,
+} from '../../infra/auth';
 import {
 	createDeviceApiKey,
 	createGenericApiKey,
@@ -15,29 +19,25 @@ export const setup = (app: Application) => {
 	 */
 	app.post(
 		'/application/:appId/generate-api-key',
-		middleware.fullyAuthenticatedUser,
+		authorizedMiddleware,
 		createUserApiKey,
 	);
 	app.post(
 		'/api-key/user/full',
-		middleware.fullyAuthenticatedUser,
-		middleware.permissionRequired('auth.create_token'),
+		authorizedMiddleware,
+		permissionRequiredMiddleware('auth.create_token'),
 		createNamedUserApiKey,
 	);
 	app.post(
 		'/api-key/application/:appId/provisioning',
-		middleware.fullyAuthenticatedUser,
+		authorizedMiddleware,
 		createProvisioningApiKey,
 	);
 	app.post(
 		'/api-key/device/:deviceId/device-key',
-		middleware.resolveApiKey,
+		apiKeyMiddleware,
 		createDeviceApiKey,
 	);
 
-	app.post(
-		'/api-key/v1',
-		middleware.fullyAuthenticatedUser,
-		createGenericApiKey,
-	);
+	app.post('/api-key/v1', authorizedMiddleware, createGenericApiKey);
 };

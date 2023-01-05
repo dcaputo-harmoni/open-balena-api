@@ -8,7 +8,7 @@ interface MockReleaseParams {
 	belongs_to__application: number;
 	is_created_by__user: number;
 	commit: string;
-	composition: AnyObject;
+	composition: string;
 	status: string;
 	source: string;
 	build_log: string;
