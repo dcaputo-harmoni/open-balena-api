@@ -1,4 +1,19 @@
 - commits:
+    - subject: Add configuration variables for HDMI port 1
+      hash: 443e6f782a36ee5c21c13e47c422cfcd82654014
+      body: |
+        Raspberry PI 4 has a second which can be configured adding the suffix :1
+        to configurations in config.txt. This commit enables those variables on
+        the API.
+      footer:
+        Change-type: patch
+        change-type: patch
+      author: Felipe Lalanne
+      nested: []
+  version: 7.5.1
+  title: ""
+  date: 2023-01-11T17:57:14.752Z
+- commits:
     - subject: Update balena/open-balena-base Docker tag to v14.2.0
       hash: f46e49cdcdf4eacf4cc0ad9f0ca78955bc486929
       body: |
