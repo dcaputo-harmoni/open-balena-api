@@ -11,6 +11,13 @@ export type Deferred<T> = Exclude<T, any[]>;
 export type PickDeferred<T, K extends keyof T> = {
 	[P in K]: Deferred<T[P]>;
 };
+export interface WebResource {
+	filename: string;
+	href: string;
+	contentType?: string;
+	contentDisposition?: string;
+	size?: number;
+}
 
 export interface Actor {
 	created_at: DateString;
