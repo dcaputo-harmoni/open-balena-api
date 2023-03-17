@@ -5,6 +5,7 @@ import type { Device } from '../../balena-model';
 
 import { sbvrUtils, permissions } from '@balena/pinejs';
 import { DEVICE_EXISTS_CACHE_TIMEOUT } from '../../lib/config';
+import type { Request } from 'express-serve-static-core';
 
 const { api } = sbvrUtils;
 
@@ -39,14 +40,17 @@ export const checkDeviceExistsIsFrozen = multiCacheMemoizee(
 );
 
 export interface ResolveDeviceInfoCustomObject {
-	resolvedDevice: Device['id'];
+	resolvedDeviceIds: number[];
 }
+
+const requestParamsUuidResolver = (req: Request) => req.params.uuid;
 
 /**
  * This checks if a device is deleted or frozen and responds according to the passed statusCode(s)
  */
 export const resolveOrDenyDevicesWithStatus = (
 	statusCode: number | { deleted: number; frozen: number },
+	uuidResolver: (req: Request) => string | string[] = requestParamsUuidResolver,
 ): RequestHandler => {
 	const deletedStatusCode =
 		typeof statusCode === 'number' ? statusCode : statusCode.deleted;
@@ -54,20 +58,32 @@ export const resolveOrDenyDevicesWithStatus = (
 		typeof statusCode === 'number' ? statusCode : statusCode.frozen;
 
 	return async (req, res, next) => {
-		const device = await checkDeviceExistsIsFrozen(req.params.uuid);
-		if (device == null) {
-			// Gracefully deny deleted devices
+		let uuids = uuidResolver(req);
+		if (!Array.isArray(uuids)) {
+			uuids = [uuids];
+		} else if (!uuids.length) {
 			res.status(deletedStatusCode).end();
 			return;
 		}
-		if (device.is_frozen) {
-			// Gracefully deny frozen devices
-			res.status(frozenStatusCode).end();
-			return;
+		const devices = await Promise.all(
+			uuids.map(async (uuid) => await checkDeviceExistsIsFrozen(uuid)),
+		);
+		const deviceIds: number[] = [];
+		for (const device of devices) {
+			if (device == null) {
+				// Gracefully deny deleted devices
+				res.status(deletedStatusCode).end();
+				return;
+			}
+			if (device.is_frozen) {
+				// Gracefully deny frozen devices
+				res.status(frozenStatusCode).end();
+				return;
+			}
+			deviceIds.push(device.id);
 		}
-
 		req.custom ??= {};
-		(req.custom as ResolveDeviceInfoCustomObject).resolvedDevice = device.id;
+		(req.custom as ResolveDeviceInfoCustomObject).resolvedDeviceIds = deviceIds;
 		next();
 	};
 };
