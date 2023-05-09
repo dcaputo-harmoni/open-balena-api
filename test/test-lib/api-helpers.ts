@@ -2,7 +2,7 @@ import { Release } from '../../src/balena-model';
 import { supertest, UserObjectParam } from '../test-lib/supertest';
 import { expect } from 'chai';
 import { version } from './versions';
-import type { PineTest } from './pinetest';
+import { pineTest, PineTest } from './pinetest';
 
 interface MockReleaseParams {
 	belongs_to__application: number;
@@ -82,7 +82,7 @@ export const addImageToRelease = async (
 };
 
 export const expectResourceToMatch = async (
-	pineUser: PineTest,
+	pineUserOrUserParam: PineTest | string | UserObjectParam,
 	resource: string,
 	id: number | AnyObject,
 	expectations: Dictionary<
@@ -93,6 +93,14 @@ export const expectResourceToMatch = async (
 		| ((chaiPropertyAssetion: Chai.Assertion) => void)
 	>,
 ) => {
+	const pineUser =
+		pineUserOrUserParam instanceof PineTest
+			? pineUserOrUserParam
+			: pineTest.clone({
+					passthrough: {
+						user: pineUserOrUserParam,
+					},
+			  });
 	const { body: result } = await pineUser
 		.get({
 			resource,
@@ -110,4 +118,20 @@ export const expectResourceToMatch = async (
 		}
 	}
 	return result;
+};
+
+export const thatIsDateStringAfter = (dateParam: Date | string | null) => {
+	if (dateParam == null) {
+		throw new Error(
+			`The date ${dateParam} provided to thatIsAfterDateString has to have a value`,
+		);
+	}
+	const date = typeof dateParam === 'string' ? new Date(dateParam) : dateParam;
+	return (prop: Chai.Assertion) =>
+		prop.that.is
+			.a('string')
+			.that.satisfies(
+				(d: string) => new Date(d) > date,
+				`Expected date to be after ${date.toISOString()}`,
+			);
 };

@@ -160,6 +160,9 @@ Term: known issue list
 Term: label name
 	Concept Type: Short Text (Type)
 
+Term: last api heartbeat state change event
+	Concept Type: Date Time (Type)
+
 Term: last connectivity event
 	Concept Type: Date Time (Type)
 
@@ -365,6 +368,9 @@ Term: device
 		Necessity: each device has exactly one api heartbeat state
 		Definition: "online" or "offline" or "timeout" or "unknown"
 
+	Fact type: device has last api heartbeat state change event
+		Necessity: each device has at most one last api heartbeat state change event.
+
 	Fact type: device has env var name
 		Term Form: device environment variable
 		Database Table Name: device environment variable
@@ -440,7 +446,7 @@ Fact type: user (Auth) has public key
 -- user public key
 
 Fact type: user public key has title
-    Necessity: each user public key has exactly one title
+	Necessity: each user public key has exactly one title
 
 
 -- application type

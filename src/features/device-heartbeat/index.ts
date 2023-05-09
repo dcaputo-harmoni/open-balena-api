@@ -245,7 +245,7 @@ export class DeviceOnlineStateManager extends EventEmitter<{
 
 		try {
 			// patch the api_heartbeat_state value to the new state...
-			const body = {
+			const baseBody = {
 				api_heartbeat_state: newState,
 			};
 			await api.resin.patch({
@@ -254,10 +254,13 @@ export class DeviceOnlineStateManager extends EventEmitter<{
 				id: deviceId,
 				options: {
 					$filter: {
-						$not: body,
+						$not: baseBody,
 					},
 				},
-				body,
+				body: {
+					...baseBody,
+					last_api_heartbeat_state_change_event: Date.now(),
+				},
 			});
 		} catch ($err) {
 			err = $err;
